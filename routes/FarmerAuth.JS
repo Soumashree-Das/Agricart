@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Farmer = require("./models/FarmerLoginDetails");
+const Farmer = require("../Models/FarmerLoginDetails");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Farmer = require("../models/Farmer");
+const Farmer = require("../Models/FarmerLoginDetails");
 const {
   verifyToken,
   verifyTokenAuthorization,

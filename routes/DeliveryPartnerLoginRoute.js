@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const DeliveryPartner = require("./models/DeliveryPartnerDetails");
+const DeliveryPartner = require("../Models/DeliveryPartnerDetails");
 const {
   verifyToken,
   verifyTokenAuthorization,

@@ -10,9 +10,9 @@ dotenv.config();
 app.use(express.json());
 
 // MongoDB connections for different databases
-const customerDb = mongoose.createConnection(process.env.MONGO_CUSTOMER_URL, { useNewUrlParser: true, useUnifiedTopology: true });
-const deliveryPartnerDb = mongoose.createConnection(process.env.MONGO_DELIVERYPARTNER_URL, { useNewUrlParser: true, useUnifiedTopology: true });
-const farmerDb = mongoose.createConnection(process.env.MONGO_FARMER_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+const customerDb = mongoose.createConnection(process.env.MONGO_CUSTOMER_URL, /*{ useNewUrlParser: true, useUnifiedTopology: true }*/);
+const deliveryPartnerDb = mongoose.createConnection(process.env.MONGO_DELIVERYPARTNER_URL,/* { useNewUrlParser: true, useUnifiedTopology: true } */);
+const farmerDb = mongoose.createConnection(process.env.MONGO_FARMER_URL,/* { useNewUrlParser: true, useUnifiedTopology: true }*/);
 
 customerDb.on('connected', () => console.log("Customer Database Connected"));
 customerDb.on('error', (err) => console.log(err));
