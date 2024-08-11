@@ -1,0 +1,47 @@
+.about{
+    padding: 50px;
+    width: 100%;
+}
+.about h1{
+    text-align: center;
+    padding: 2vw;
+    color: rgb(45, 89, 55);
+}
+.imgcontainer img{
+    height: 100vh;
+    width: 100%;
+}
+.aboutcontents{
+    padding: 3vw;
+}
+.aboutcontents p{
+    padding: 1vw;
+    font-size: 1.1rem;
+}
+
+h3{
+    text-align: center;
+    color: rgb(45, 89, 55);
+    
+}
+.team{
+    padding-top: 20px;
+    min-height: 50vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.content{
+    height: 350px;
+}
+.content img{
+    height:500x;
+    width: 200px;
+    padding: 10px;
+    border-radius:50%;
+}
+.content h4{
+    color: rgb(45, 89, 55);
+    text-align: center;
+}
