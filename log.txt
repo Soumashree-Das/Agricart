@@ -1,2 +1,0 @@
-Path: /api/auth/customers/register, Date: 28/7/2024, Time: 6:40:32 pm
-Path: /api/auth/customers/register, Date: 28/7/2024, Time: 6:41:23 pm
