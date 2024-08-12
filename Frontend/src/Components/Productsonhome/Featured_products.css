@@ -1,0 +1,45 @@
+.featuredproducts {
+    text-align: left;
+    padding: 20px;
+  }
+  
+  .featuredproducts h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #006030;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .card1, .card2,.card3,.card4,.card5 {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Adjust the width as needed */
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .card1 img, .card2 img,.card3 img,.card4 img,.card5 img {
+    width: 100%;
+    height: 210px;
+    display: block;
+  }
+  .card1 h3,.card2 h3,.card3 h3,.card4 h3,.card5 h3{
+    margin: 10px 5px;
+    font-size: 1.2rem;
+    color: #801a1a;
+  }
+  
+  .card1:hover, .card2:hover,.card3:hover,.card4:hover,.card5:hover {
+    transform: translateY(-5px);
+  }
+
+  
