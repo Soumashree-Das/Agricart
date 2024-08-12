@@ -1,0 +1,62 @@
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+
+form {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    color: green;
+    text-align: center;
+  }
+  
+  .input-box {
+    margin-bottom: 20px;
+  }
+  
+  .input-box label {
+    display: block;
+    margin-bottom: 5px;
+    color: green;
+    font-weight: bold;
+  }
+  
+  .input-box .feild {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid green;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #333;
+  }
+  
+  .input-box .message {
+    resize: none;
+    height: 100px;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: darkgreen;
+  }
+  
