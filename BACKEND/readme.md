@@ -1,1 +1,1 @@
-"There are some issues right now....Soumashree fix these....Right now it can not fetch from the product id "
+Code is in working condition
