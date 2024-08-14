@@ -4,6 +4,19 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
+const registerUser = asyncHandler( (req,res) => {
+    //get user details from frontend 
+    //validate user - empty
+    //check if user already exist - check user name and emai existence
+    //cover image - if available upload to cloudinary
+    //create user object - create entry in db
+    //remove password and refresh token field
+    //check for user creattion
+    //return res
+})
+
+export {registerUser}
+
 // Controller to add a new user
 const addUser = asyncHandler(async (req, res) => {
     const { username, name, password, gender, address, pincode, email, phoneNumber } = req.body;
