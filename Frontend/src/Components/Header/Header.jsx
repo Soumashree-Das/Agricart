@@ -1,13 +1,27 @@
 import React from 'react'
 import './Header.css'
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Product from "./Product";
+import { productData, responsive } from "./data";
 const Header = () => {
+  const product = productData.map((item) => (
+    <Product
+      name={item.name}
+      url={item.imageurl}
+      price={item.price}
+      description={item.description}
+    />
+  ));
   return (
-    <div className='header'>
-      <div className="header-contents">
-        <h2>FRESH MARKET WE'LL DELIVER EVERYTHING YOU NEED</h2>
-        <p>"Harvested with Care, Delivered with Trust – Empowering Farmers, Serving Freshness"</p>
-        <button>SHOP ONLINE</button>
-      </div>
+    <div className="header">
+      <Carousel 
+      showDots={false} responsive={responsive} 
+      inifinite={true}
+      autoPlay={true}
+      autoPlaySpeed={3000}>
+        {product}
+      </Carousel>
     </div>
   )
 }
