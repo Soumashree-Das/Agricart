@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
-
+//schema for user of our website
 const userSchema = new Schema({
     username: {
         type: String,
