@@ -53,8 +53,45 @@ const getAllFarmers = asyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse("All farmers retrieved successfully", allFarmers));
 });
 
+// Controller to update a farmer by ID
+const updateFarmer = asyncHandler(async (req, res) => {
+    const { farmerId } = req.params;
+    const updateData = req.body;
+
+    if (!isValidObjectId(farmerId)) {
+        throw new ApiError("Invalid Farmer ID", 400);
+    }
+
+    const updatedFarmer = await Farmer.findByIdAndUpdate(farmerId, updateData, { new: true, runValidators: true });
+
+    if (!updatedFarmer) {
+        throw new ApiError("Farmer not found", 404);
+    }
+
+    res.status(200).json(new ApiResponse("Farmer updated successfully", updatedFarmer));
+});
+
+// Controller to delete a farmer by ID
+const deleteFarmer = asyncHandler(async (req, res) => {
+    const { farmerId } = req.params;
+
+    if (!isValidObjectId(farmerId)) {
+        throw new ApiError("Invalid Farmer ID", 400);
+    }
+
+    const deletedFarmer = await Farmer.findByIdAndDelete(farmerId);
+
+    if (!deletedFarmer) {
+        throw new ApiError("Farmer not found", 404);
+    }
+
+    res.status(200).json(new ApiResponse("Farmer deleted successfully", deletedFarmer));
+});
+
 export {
     addFarmer,
     getFarmerDetails,
     getAllFarmers,
+    updateFarmer,
+    deleteFarmer,
 };

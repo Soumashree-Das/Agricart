@@ -52,8 +52,45 @@ const getAllStock = asyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse("All stock items retrieved successfully", allStock));
 });
 
+// Controller to update a stock item
+const updateStock = asyncHandler(async (req, res) => {
+    const { productId } = req.params;
+    const updateData = req.body;
+
+    if (!isValidObjectId(productId)) {
+        throw new ApiError("Invalid Product ID", 400);
+    }
+
+    const updatedStock = await Product.findByIdAndUpdate(productId, updateData, { new: true, runValidators: true });
+
+    if (!updatedStock) {
+        throw new ApiError("Stock item not found", 404);
+    }
+
+    res.status(200).json(new ApiResponse("Stock item updated successfully", updatedStock));
+});
+
+// Controller to delete a stock item
+const deleteStock = asyncHandler(async (req, res) => {
+    const { productId } = req.params;
+
+    if (!isValidObjectId(productId)) {
+        throw new ApiError("Invalid Product ID", 400);
+    }
+
+    const deletedStock = await Product.findByIdAndDelete(productId);
+
+    if (!deletedStock) {
+        throw new ApiError("Stock item not found", 404);
+    }
+
+    res.status(200).json(new ApiResponse("Stock item deleted successfully", deletedStock));
+});
+
 export {
     addStock,
     getStockDetails,
     getAllStock,
+    updateStock,
+    deleteStock,
 };

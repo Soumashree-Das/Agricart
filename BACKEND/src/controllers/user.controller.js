@@ -51,8 +51,45 @@ const getAllUsers = asyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse("All users retrieved successfully", allUsers));
 });
 
+// Controller to update a user by ID
+const updateUser = asyncHandler(async (req, res) => {
+    const { userId } = req.params;
+    const updateData = req.body;
+
+    if (!isValidObjectId(userId)) {
+        throw new ApiError("Invalid User ID", 400);
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(userId, updateData, { new: true, runValidators: true });
+
+    if (!updatedUser) {
+        throw new ApiError("User not found", 404);
+    }
+
+    res.status(200).json(new ApiResponse("User updated successfully", updatedUser));
+});
+
+// Controller to delete a user by ID
+const deleteUser = asyncHandler(async (req, res) => {
+    const { userId } = req.params;
+
+    if (!isValidObjectId(userId)) {
+        throw new ApiError("Invalid User ID", 400);
+    }
+
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+        throw new ApiError("User not found", 404);
+    }
+
+    res.status(200).json(new ApiResponse("User deleted successfully", deletedUser));
+});
+
 export {
     addUser,
     getUserDetails,
     getAllUsers,
+    updateUser,
+    deleteUser,
 };

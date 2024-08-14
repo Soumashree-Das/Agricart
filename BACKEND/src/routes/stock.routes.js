@@ -2,7 +2,9 @@ import { Router } from 'express';
 import {
     addStock,
     getStockDetails,
-    getAllStock,  // Import the new controller function
+    getAllStock,
+    updateStock,
+    deleteStock  // Import the new controller function
 } from "../controllers/stock.controller.js";
 
 const router = Router();
@@ -14,6 +16,8 @@ router.route("/")
 
 // Route to get stock details by `productId`
 router.route("/:productId")
-    .get(getStockDetails);
+    .get(getStockDetails)
+    .patch(updateStock)
+    .delete(deleteStock);
 
 export default router;
