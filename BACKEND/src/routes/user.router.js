@@ -20,4 +20,7 @@ router.get('/', getAllUsers);
 router.get('/:userId', getUserDetails);
 router.patch('/:userId', updateUser);
 router.get('/:userId', deleteUser);
+
+
+//exporting the router
 export default router;
