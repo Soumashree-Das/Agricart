@@ -3,6 +3,7 @@ import { Product } from "../models/stock.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 // Controller to add a new stock item
 const addStock = asyncHandler(async (req, res) => {
@@ -19,6 +20,33 @@ const addStock = asyncHandler(async (req, res) => {
         product_id,
         seller_name,
     });
+
+    //images as files
+    const photoLocation = req.files?.photo[0]?.path
+    // if(!photoLocation){
+    //     throw new ApiError(400 , "photo is required to be uploaded!")
+    // }
+    const stockPhoto = await uploadOnCloudinary(photoLocation)
+    if(
+        [Mrp,description,units,date_of_produce,growing_practices,place_of_origin,product_id,seller_name,].some( (field) => {
+        field?.trim === ""
+        })
+    ){
+        throw new ApiError(400,"all fields are required!")
+    }
+
+    Product.create({
+        Mrp,
+        description,
+        units,
+        date_of_produce,
+        growing_practices,
+        place_of_origin,
+        product_id,
+        seller_name,
+        photo : stockPhoto.url || "",
+
+    })
 
     await newStock.save();
     res.status(201).json(new ApiResponse("Stock item added successfully", newStock));

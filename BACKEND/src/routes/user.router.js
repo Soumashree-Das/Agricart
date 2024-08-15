@@ -1,16 +1,25 @@
 import { Router } from 'express';
 import {
-    registerUser,
     addUser,
+    registerUser,
     getUserDetails,
     getAllUsers,
     updateUser,
     deleteUser  // Import the new controller function
 } from "../controllers/user.controller.js";
+import { upload } from "../middlewares/multer.middleware.js"
 
 const router = Router();
 
-router.route("/register").post(registerUser); //http://localhost:8000/api/v1/users/register 
+router.route("/register").post(
+    // upload.fields([
+    //     {
+    //         name : coverImage,
+    //         maxCount : 1
+    //     }
+    // ]),//accepts arrays of info
+    registerUser
+); //http://localhost:8000/api/v1/users/register 
 //works perfectly fpr registered user.. is user is not present or any credential is wrong server access is denied
 
 //router.route("/login").post(login); ////http://localhost:8000/api/v1/users/login

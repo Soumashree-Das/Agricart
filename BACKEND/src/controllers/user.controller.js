@@ -4,9 +4,10 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
-const registerUser = asyncHandler( (req,res) => {
+const registerUser = asyncHandler( async (req,res) => {
     //get user details from frontend 
-    //validate user - empty
+    const { username, name, password, gender, address, pincode, email, phoneNumber,coverImage } = req.body;
+    
     //check if user already exist - check user name and emai existence
     //cover image - if available upload to cloudinary
     //create user object - create entry in db
@@ -31,6 +32,22 @@ const addUser = asyncHandler(async (req, res) => {
         email,
         phoneNumber,
     });
+    // //validate user - if any field is empty
+    // if(
+    //     [name , username , password , email].some( (field) => {
+    //     field?.trim === ""
+    //     })
+    // ){
+    //     throw new ApiError(400,"all fields are required!")
+    // }
+
+    // //check if the user already exists
+    // const existedUser = User.findOne({
+    //     $or : [ { username } , { email }]
+    // })
+    // if(existedUser) {
+    //     throw new ApiError(409 , "Username or email already exists")
+    // }
 
     await newUser.save();
     res.status(201).json(new ApiResponse("User added successfully", newUser));
